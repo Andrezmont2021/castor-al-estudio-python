@@ -9,4 +9,6 @@ for index, item in final_list:
             count+=1    
 print(count)
 
+
+
 #1692
