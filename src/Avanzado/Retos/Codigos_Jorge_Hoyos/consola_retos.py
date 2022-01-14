@@ -18,19 +18,24 @@ while continuar:
     6. Buscar palabras palíndromas en una lista
     7. Salir
     ---------------------------------------""")
-    ret = int(input("Ingrese el número de reto que desea evaluar: "))
-    if ret == 1:
-        continuar = reto_par()
-    elif ret == 2:
-        continuar = reto_mayor()
-    elif ret == 3:
-        continuar = pares()
-    elif ret == 4:
-        continuar = list_acum()
-    elif ret == 5:
-        continuar = lista_multiplos()
-    elif ret == 6:
-        continuar = inversa()
-    elif ret == 7:
-        continuar = False
-    input("Presione enter para continuar...")
+    try:
+        ret = int(input("Ingrese el número de reto que desea evaluar: "))
+        if ret == 1:
+            continuar = reto_par()
+        elif ret == 2:
+            continuar = reto_mayor()
+        elif ret == 3:
+            continuar = pares()
+        elif ret == 4:
+            continuar = list_acum()
+        elif ret == 5:
+            continuar = lista_multiplos()
+        elif ret == 6:
+            continuar = inversa()
+        elif ret == 7:
+            continuar = False
+        input("Presione enter para continuar...")
+    except:
+        print("No ingresó un número, vuelva a intentar")
+        input("Presione enter para continuar...")
+        continuar = True
