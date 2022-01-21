@@ -7,7 +7,7 @@
 # the least common bit from each position is used. So, the epsilon rate is 01001, or 9 in decimal. 
 # Multiplying the gamma rate (22) by the epsilon rate (9) produces the power consumption, 198.
 
-with open('c:/cursoP1/advent_calendar/datos_d3.txt', 'r') as f:
+with open('c:/castor_al_estudio_python/castor-al-estudio-python/src/Avanzado/Retos/Codigos_Jorge_Hoyos/advent_calendar/datos_d3.txt', 'r') as f:
     x = f.read().split("\n")       #Lee el archivo de entrada y lo organiza en lista de strings
     data = []
 
@@ -40,3 +40,58 @@ print(f"Epsilon is {epsilon}")
 print(f"Gamma = {g}")
 print(f"Epsilon = {e}")
 print(f"Part 1: {g *e}")
+
+#PART 2
+gamma = ""
+epsilon = ""
+
+data2  = data.copy()
+index = 0
+while len(data) > 1:
+    one = 0
+    zero = 0
+    ones = []
+    zeroes = []
+    for c in range(0, len(data)):
+        if data[c][index] == "0":
+            zero += 1
+            zeroes.append(data[c])
+        else:
+            one += 1
+            ones.append(data[c])
+    if zero > one:
+        data = zeroes
+    else:
+        data = ones
+    index += 1
+#print(data)
+data = ''.join(data[0])
+print(f"Oxygen is {data}")
+oxygen = int(data, 2)
+
+data = data2
+index = 0
+while len(data) > 1:
+    one = 0
+    zero = 0
+    ones = []
+    zeroes = []
+    for c in range(0, len(data)):
+        if data[c][index] == "0":
+            zero += 1
+            zeroes.append(data[c])
+        else:
+            one += 1
+            ones.append(data[c])
+    if one < zero:
+        data = ones
+    else:
+        data = zeroes
+    index += 1
+#print(data)
+data = ''.join(data[0])
+print(f"CO2 is {data}")
+co2 = int(data, 2)
+print(f"Oxygen = {oxygen}")
+print(f"CO2 = {co2}")
+print(f"Part 2: {oxygen * co2}")
