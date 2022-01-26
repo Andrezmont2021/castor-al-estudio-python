@@ -1,23 +1,48 @@
+# Programación orientada a objetos, primera parte. + Encapsulación de propiedades 
 class Coche:
-    # Propiedades
-    largo_chasis = 250
-    ancho = 120
-    ruedas = 4
-    marcha = False
+    # Propiedades, estado inicial encapsulado
+    def __init__(self):
+        self.__largo_chasis = 250
+        self.__ancho = 120
+        self.__ruedas = 4
+        self.__marcha = False
 
     # Comportamientos (¿Qué puede hacer? arrancar, frenar, girar...)
-    def arrancar(self):
-        self.marcha = True
+    def arrancar(self, arranca):
+        self.__marcha = arranca
 
-    def estado (self):
-        if self.marcha == True:
+        if self.__marcha:
+            chequeo = self.__chequeo_interno()
+        if self.__marcha and chequeo:
             return "El carro está en marcha"
+        elif self.__marcha and chequeo == False:
+            return "Algo ha salido mal en el chequeo, no se puede arrancar"
         else :
-            return "El coche está parado"
+            return "El carro está parado"
 
-mi_donkey =Coche()
-print(f"El largo del carro es {mi_donkey.largo_chasis}")
-print(f"El carro tiene {mi_donkey.ruedas} ruedas")
-mi_donkey.arrancar()
+    def estado(self):
+        print(f"El carro tiene {self.__ruedas} ruedas. Un ancho de {self.__ancho} y un largo de {self.__largo_chasis}")
 
-print(mi_donkey.estado())
+    # Método encapsulado, solo accesible a través del método arrancar
+    def __chequeo_interno(self):   
+        print("Realizando chequeo interno")
+        
+        self.gasolina = "ok"
+        self.aceite = "ok"
+        self.puertas = "cerradas"
+
+        if self.gasolina == "ok" and self.aceite == "ok" and self.puertas == "cerradas":
+            return True
+        else:
+            return False
+
+mi_donkey = Coche()
+print(mi_donkey.arrancar(True))
+mi_donkey.estado()
+
+print("----------A continuación creamos la segunda instancia (segundo objeto)------------")
+
+tu_donkey = Coche()
+print(tu_donkey.arrancar(False))
+tu_donkey.__ruedas = 2
+tu_donkey.estado()
